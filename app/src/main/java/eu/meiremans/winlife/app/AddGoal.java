@@ -2,6 +2,7 @@ package eu.meiremans.winlife.app;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,14 +18,18 @@ public class AddGoal extends Activity {
         db = new MyDatabase(this);
 
         setContentView(R.layout.activity_add_goal);
+        Goal goal = new Goal();
+        goal.setGoalDescription("test");
+        goal.setGoalPoints(5);
+        add_Goal(goal);
     }
 
     // Adding new goal
-    public void Add_Goal(Goal goal) {
+    public void add_Goal(Goal goal) {
         SQLiteDatabase dbw = db.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("goalName", goal.getGoalDescription()); // Contact Phone
-        values.put("goalPoint", goal.getGoalPoints()); // Contact Email
+        values.put("goalName", goal.getGoalDescription());
+        values.put("goalPoint", goal.getGoalPoints());
 // Inserting Row
         dbw.insert("goals", null, values);
         dbw.close(); // Closing database connection
@@ -39,16 +44,18 @@ public class AddGoal extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch(item.getItemId()) {
+            case R.id.action_overview:
+                Intent intent = new Intent(this, ReadGoals.class);
+                this.startActivity(intent);
+                break;
+            case R.id.action_settings:break;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 }
