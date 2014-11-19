@@ -7,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import eu.meiremans.winlife.app.business.Goal;
 
 
@@ -19,10 +23,7 @@ public class AddGoal extends Activity {
         db = new MyDatabase(this);
 
         setContentView(R.layout.activity_add_goal);
-        Goal goal = new Goal();
-        goal.setGoalDescription("test");
-        goal.setGoalPoints(5);
-        add_Goal(goal);
+        addListenerOnButton();
     }
 
     // Adding new goal
@@ -41,6 +42,23 @@ public class AddGoal extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_goal, menu);
         return true;
+    }
+
+    public void addListenerOnButton() {
+
+        Button button = (Button) findViewById(R.id.btnAddGoal);
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText mEditGoal   = (EditText)findViewById(R.id.goal_to_add);
+                EditText mEditPoints   = (EditText)findViewById(R.id.points_for_goal);
+
+                Goal goal = new Goal();
+                goal.setGoalDescription(mEditGoal.getText().toString());
+                goal.setGoalPoints((Integer.parseInt(mEditPoints.getText().toString())));
+                add_Goal(goal);
+            }
+        });
     }
 
     @Override
