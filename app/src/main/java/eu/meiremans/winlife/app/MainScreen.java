@@ -1,45 +1,32 @@
 package eu.meiremans.winlife.app;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import eu.meiremans.winlife.app.business.Goal;
 
+/**
+ * Created by Nick on 19/11/2014.LIKE A BOSS
+ */
+public class MainScreen extends Activity {
 
-public class AddGoal extends Activity {
     private MyDatabase db;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //initialize database on first run(Otherwise this happens on first transaction & this takes a while
         db = new MyDatabase(this);
-
-        setContentView(R.layout.activity_add_goal);
-        Goal goal = new Goal();
-        goal.setGoalDescription("test");
-        goal.setGoalPoints(5);
-        add_Goal(goal);
-    }
-
-    // Adding new goal
-    public void add_Goal(Goal goal) {
         SQLiteDatabase dbw = db.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("goalName", goal.getGoalDescription());
-        values.put("goalPoint", goal.getGoalPoints());
-// Inserting Row
-        dbw.insert("goals", null, values);
-        dbw.close(); // Closing database connection
-    }
+        dbw.close();
 
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_goal, menu);
+        getMenuInflater().inflate(R.menu.menu_main_screen, menu);
         return true;
     }
 
@@ -47,8 +34,12 @@ public class AddGoal extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_overview:
-                Intent intent = new Intent(this, ReadGoals.class);
-                this.startActivity(intent);
+                Intent action_overview_intent = new Intent(this, ReadGoals.class);
+                this.startActivity(action_overview_intent);
+                break;
+            case R.id.action_add_goal:
+                Intent add_goal_intent = new Intent(this, AddGoal.class);
+                this.startActivity(add_goal_intent);
                 break;
             case R.id.action_settings:break;
 
@@ -59,4 +50,6 @@ public class AddGoal extends Activity {
 
         return true;
     }
+
+
 }
