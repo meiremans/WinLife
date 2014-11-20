@@ -21,20 +21,20 @@ public class GoalDAO {
     public GoalDAO(Context context){
         db = new MyDatabase(context);
     }
-    public ArrayList<Goal> getAllMainGoals(){
+    public ArrayList<MainGoal> getAllMainGoals(){
         String goalName;
         Integer goalPoints;
-        ArrayList<Goal> mainGoals = new ArrayList<>();
+        ArrayList<MainGoal> mainGoals = new ArrayList<>();
         SQLiteDatabase dbw = db.getWritableDatabase();
         String selectQuery = "SELECT " +  GoalsTable.GOAL_NAME.getColumnName() + "," + GoalsTable.GOAL_POINT.getColumnName() +
-        " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsTable.GOAL_IS_PART_OF.getColumnName() + "=NULL";
+        " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsTable.GOAL_IS_PART_OF.getColumnName() + " is null";
         Cursor c = dbw.rawQuery(selectQuery, null);
         if (c.moveToFirst()) {
             do {
                 goalName = c.getString(c.getColumnIndex(GoalsTable.GOAL_NAME.getColumnName()));
                 goalPoints = c.getInt(c.getColumnIndex(GoalsTable.GOAL_POINT.getColumnName()));
-                Goal goal = new MainGoal(goalName, goalPoints);
-                mainGoals.add(goal);
+                MainGoal mainGoal = new MainGoal(goalName, goalPoints);
+                mainGoals.add(mainGoal);
             }while(c.moveToNext());
         }
         c.close();
@@ -49,7 +49,7 @@ public class GoalDAO {
         ContentValues values = new ContentValues();
         values.put(GoalsTable.GOAL_NAME.getColumnName(), goal.getGoalDescription());
         values.put(GoalsTable.GOAL_POINT.getColumnName(), goal.getGoalPoints());
-        dbw.insert("goals", null, values);
+        dbw.insert(WinLifeTables.GOALS.getTableName(), null, values);
         dbw.close(); // Closing database connection
     }
 
