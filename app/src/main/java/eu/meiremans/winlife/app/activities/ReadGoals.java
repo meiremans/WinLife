@@ -5,10 +5,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.ExpandableListView;
+import android.widget.Toast;
 import eu.meiremans.winlife.app.R;
+import eu.meiremans.winlife.app.business.Goal;
 import eu.meiremans.winlife.app.business.MainGoal;
+import eu.meiremans.winlife.app.business.MyExpandableListAdapter;
+import eu.meiremans.winlife.app.business.SubGoal;
 import eu.meiremans.winlife.app.connection.GoalDAO;
+import java.util.HashMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +22,9 @@ import java.util.List;
  * Created by Nick on 17/11/2014.LIKE A BOSS
  */
 public class ReadGoals extends Activity {
-    private GridView gridView;
+    private ExpandableListView expandableListView;
+    private List<MainGoal> mainGoals;
+    private  HashMap<MainGoal, List<SubGoal>> subGoals = new HashMap<MainGoal, List<SubGoal>>();
 
 
 
@@ -30,32 +37,41 @@ public class ReadGoals extends Activity {
 
         // Reading all goals
         Log.d("Reading: ", "Reading all goals..");
-        List<MainGoal> goals = getAllGoals(this);
-        ArrayList<String> goalNames = new ArrayList<>();
+        mainGoals = getAllGoals(this);
 
-        for (MainGoal goal : goals) {
-            String log = "Id: "+goal.getId()+" ,Name: " + goal.getGoalDescription() + " ,Points: " + goal.getGoalPoints();
-            // Writing Goals to log
-            Log.d("goal: ", log);
+        for(MainGoal s: mainGoals){
+            SubGoal subGoal = new SubGoal("trololol",(Integer)5005,1);
+            ArrayList <SubGoal>subGoalsA = new ArrayList<SubGoal>();
+            subGoalsA.add(subGoal);
+            subGoals.put(s,subGoalsA);
 
-            goalNames.add(goal.getGoalDescription());
 
         }
 
 
 
-        gridView = (GridView) findViewById(R.id.overviewGrid);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, goalNames);
 
-        gridView.setAdapter(adapter);
+        expandableListView = (ExpandableListView) findViewById(R.id.overview);
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                Toast.makeText(getApplicationContext(),
-                        ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
+
+        MyExpandableListAdapter adapter = new MyExpandableListAdapter(this,mainGoals,subGoals);
+
+        expandableListView.setAdapter(adapter);
+
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        mainGoals.get(groupPosition)
+                                + " : "
+                                + subGoals.get(
+                                mainGoals.get(groupPosition)).get(
+                                childPosition), Toast.LENGTH_SHORT)
+                        .show();
+                return false;
             }
         });
     }

@@ -9,9 +9,14 @@ public class SubGoal extends Goal {
 
     Integer isPartOf;
 
-   public SubGoal(String goalDescription,Integer goalPoints,Integer isPartOf){
-        super(goalDescription,goalPoints);
-       this.isPartOf = isPartOf;
+    public SubGoal(String goalDescription, Integer goalPoints, Integer isPartOf) {
+        super(goalDescription, goalPoints);
+        this.isPartOf = isPartOf;
+    }
+
+    public SubGoal(Integer id, String goalDescription, Integer goalPoints, Integer isPartOf) {
+        super(id, goalDescription, goalPoints);
+        this.isPartOf = isPartOf;
     }
 
     public Integer getIsPartOf() {
@@ -20,5 +25,10 @@ public class SubGoal extends Goal {
 
     public void setIsPartOf(Integer isPartOf) {
         this.isPartOf = isPartOf;
+    }
+
+    @Override
+    public String toString() {
+       return this.getGoalDescription();
     }
 }

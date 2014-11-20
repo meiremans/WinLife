@@ -23,14 +23,14 @@ public class GoalDAO {
         db = new MyDatabase(context);
     }
     public ArrayList<MainGoal> getAllMainGoals(){
-      Integer goalId;
+        Integer goalId;
         String goalName;
         Integer goalPoints;
         ArrayList<MainGoal> mainGoals = new ArrayList<>();
         SQLiteDatabase dbw = db.getWritableDatabase();
         //if goalIsPartOf is null, then it means its a main goal
         String selectQuery = "SELECT " + GoalsTable.ID.getColumnName() + "," + GoalsTable.GOAL_NAME.getColumnName() + "," + GoalsTable.GOAL_POINT.getColumnName() +
-        " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsTable.GOAL_IS_PART_OF.getColumnName() + " is null";
+                " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsTable.GOAL_IS_PART_OF.getColumnName() + " is null";
         Cursor c = dbw.rawQuery(selectQuery, null);
         if (c.moveToFirst()) {
             do {
@@ -46,6 +46,33 @@ public class GoalDAO {
         return mainGoals;
 
     }
+
+    public ArrayList<SubGoal> getAllSubGoals(MainGoal maingoal){
+        Integer goalId;
+        String goalName;
+        Integer goalPoints;
+        ArrayList<SubGoal> subGoals = new ArrayList<>();
+        SQLiteDatabase dbw = db.getWritableDatabase();
+        //if goalIsPartOf is null, then it means its a main goal
+        String selectQuery = "SELECT " + GoalsTable.ID.getColumnName() + "," + GoalsTable.GOAL_NAME.getColumnName() + "," + GoalsTable.GOAL_POINT.getColumnName() + "," + GoalsTable.GOAL_IS_PART_OF.getColumnName() +
+                " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsTable.GOAL_IS_PART_OF.getColumnName() + maingoal.getId();
+        Cursor c = dbw.rawQuery(selectQuery, null);
+        if (c.moveToFirst()) {
+            do {
+                goalId = c.getInt(c.getColumnIndex(GoalsTable.ID.getColumnName()));
+                goalName = c.getString(c.getColumnIndex(GoalsTable.GOAL_NAME.getColumnName()));
+                goalPoints = c.getInt(c.getColumnIndex(GoalsTable.GOAL_POINT.getColumnName()));
+                SubGoal subGoal = new SubGoal(goalId,goalName, goalPoints,maingoal.getId());
+                subGoals.add(subGoal);
+            }while(c.moveToNext());
+        }
+        c.close();
+
+        return subGoals;
+
+    }
+
+
 
     public void addMainGoal(MainGoal goal){
 

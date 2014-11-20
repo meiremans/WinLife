@@ -12,9 +12,9 @@
         android:text="@string/overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:id="@+id/textView"/>
-    <GridView
+    <ExpandableListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/overviewGrid" android:layout_below="@+id/textView" android:layout_alignParentStart="true"/>
+            android:id="@+id/overview"/>
 
 </RelativeLayout>
