@@ -1,4 +1,4 @@
-package eu.meiremans.winlife.app;
+package eu.meiremans.winlife.app.activities;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import eu.meiremans.winlife.app.business.Goal;
+import eu.meiremans.winlife.app.R;
+import eu.meiremans.winlife.app.business.MainGoal;
+import eu.meiremans.winlife.app.connection.MyDatabase;
 
 
 public class AddGoal extends Activity {
@@ -27,12 +29,11 @@ public class AddGoal extends Activity {
     }
 
     // Adding new goal
-    public void add_Goal(Goal goal) {
+    public void add_Goal(MainGoal goal) {
         SQLiteDatabase dbw = db.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("goalName", goal.getGoalDescription());
         values.put("goalPoint", goal.getGoalPoints());
-// Inserting Row
         dbw.insert("goals", null, values);
         dbw.close(); // Closing database connection
     }
@@ -53,9 +54,7 @@ public class AddGoal extends Activity {
                 EditText mEditGoal   = (EditText)findViewById(R.id.goal_to_add);
                 EditText mEditPoints   = (EditText)findViewById(R.id.points_for_goal);
 
-                Goal goal = new Goal();
-                goal.setGoalDescription(mEditGoal.getText().toString());
-                goal.setGoalPoints((Integer.parseInt(mEditPoints.getText().toString())));
+                MainGoal goal = new MainGoal(mEditGoal.getText().toString(),(Integer.parseInt(mEditPoints.getText().toString())));
                 add_Goal(goal);
             }
         });

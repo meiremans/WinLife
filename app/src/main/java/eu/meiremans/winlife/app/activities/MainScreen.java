@@ -1,4 +1,4 @@
-package eu.meiremans.winlife.app;
+package eu.meiremans.winlife.app.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import eu.meiremans.winlife.app.R;
+import eu.meiremans.winlife.app.connection.MyDatabase;
 
 /**
  * Created by Nick on 19/11/2014.LIKE A BOSS

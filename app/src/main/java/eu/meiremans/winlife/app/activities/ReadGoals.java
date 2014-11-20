@@ -1,4 +1,4 @@
-package eu.meiremans.winlife.app;
+package eu.meiremans.winlife.app.activities;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
-import eu.meiremans.winlife.app.business.Goal;
+import eu.meiremans.winlife.app.R;
+import eu.meiremans.winlife.app.business.MainGoal;
+import eu.meiremans.winlife.app.connection.MyDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +37,10 @@ public class ReadGoals extends Activity {
 
         // Reading all contacts
         Log.d("Reading: ", "Reading all contacts..");
-        List<Goal> goals = getAllGoals();
+        List<MainGoal> goals = getAllGoals();
         ArrayList<String> goalNames = new ArrayList<>();
 
-        for (Goal goal : goals) {
+        for (MainGoal goal : goals) {
             String log = "Id: "+goal.getId()+" ,Name: " + goal.getGoalDescription() + " ,Points: " + goal.getGoalPoints();
             // Writing Goals to log
             Log.d("goal: ", log);
@@ -65,8 +67,8 @@ public class ReadGoals extends Activity {
         });
     }
 
-    public List<Goal> getAllGoals() {
-        List<Goal> goalList = new ArrayList<>();
+    public List<MainGoal> getAllGoals() {
+        List<MainGoal> goalList = new ArrayList<>();
         // Select All Query
         String selectQuery = "SELECT  * FROM GOALS" ;
 
@@ -76,10 +78,9 @@ public class ReadGoals extends Activity {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                Goal goal = new Goal();
+                MainGoal goal = new MainGoal(cursor.getString(1), cursor.getInt(2));
                 goal.setId(Integer.parseInt(cursor.getString(0)));
-                goal.setGoalDescription(cursor.getString(1));
-                goal.setGoalPoints(cursor.getInt(2));
+
 
                 goalList.add(goal);
             } while (cursor.moveToNext());

@@ -1,4 +1,4 @@
-package eu.meiremans.winlife.app;
+package eu.meiremans.winlife.app.connection;
 
 import android.content.Context;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;

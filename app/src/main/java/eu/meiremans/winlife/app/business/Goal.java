@@ -1,12 +1,18 @@
 package eu.meiremans.winlife.app.business;
 
 /**
- * Created by Nick on 16/11/2014.
+ * Created by Nick on 19/11/2014.LIKE A BOSS
  */
 public class Goal {
+
     Integer id;
     String goalDescription;
     Integer goalPoints;
+
+   protected Goal(String goalDescription,Integer goalPoints){
+        this.goalDescription = goalDescription;
+        this.goalPoints = goalPoints;
+    }
 
     public Integer getId() {
         return id;
