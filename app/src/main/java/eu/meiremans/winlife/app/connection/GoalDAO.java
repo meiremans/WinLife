@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import eu.meiremans.winlife.app.business.Goal;
 import eu.meiremans.winlife.app.business.MainGoal;
+import eu.meiremans.winlife.app.business.SubGoal;
 import eu.meiremans.winlife.app.enums.GoalsTable;
 import eu.meiremans.winlife.app.enums.WinLifeTables;
 
@@ -46,12 +47,22 @@ public class GoalDAO {
 
     }
 
-    public void addGoal(Goal goal){
+    public void addMainGoal(MainGoal goal){
 
         SQLiteDatabase dbw = db.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(GoalsTable.GOAL_NAME.getColumnName(), goal.getGoalDescription());
         values.put(GoalsTable.GOAL_POINT.getColumnName(), goal.getGoalPoints());
+        dbw.insert(WinLifeTables.GOALS.getTableName(), null, values);
+        dbw.close(); // Closing database connection
+    }
+    public void addSubGoal(SubGoal goal){
+
+        SQLiteDatabase dbw = db.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(GoalsTable.GOAL_NAME.getColumnName(), goal.getGoalDescription());
+        values.put(GoalsTable.GOAL_POINT.getColumnName(), goal.getGoalPoints());
+        values.put(GoalsTable.GOAL_IS_PART_OF.getColumnName(), goal.getIsPartOf());
         dbw.insert(WinLifeTables.GOALS.getTableName(), null, values);
         dbw.close(); // Closing database connection
     }
