@@ -8,11 +8,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import eu.meiremans.winlife.app.R;
 import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.connection.GoalDAO;
+
+import java.util.List;
 
 
 public class AddGoal extends Activity {
@@ -21,9 +25,17 @@ public class AddGoal extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_add_goal);
+        GoalDAO goalDAO = new GoalDAO(this);
+        List<MainGoal> mainGoals = goalDAO.getAllMainGoals();
+
+        ArrayAdapter<MainGoal> adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, mainGoals);
+        Spinner mainGoalSpinner =  (Spinner) findViewById(R.id.mainGoalSelection);
+
+        mainGoalSpinner.setAdapter(adapter);
+
+
         addListenerOnButton();
     }
 

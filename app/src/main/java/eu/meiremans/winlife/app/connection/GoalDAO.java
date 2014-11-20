@@ -22,18 +22,21 @@ public class GoalDAO {
         db = new MyDatabase(context);
     }
     public ArrayList<MainGoal> getAllMainGoals(){
+      Integer goalId;
         String goalName;
         Integer goalPoints;
         ArrayList<MainGoal> mainGoals = new ArrayList<>();
         SQLiteDatabase dbw = db.getWritableDatabase();
-        String selectQuery = "SELECT " +  GoalsTable.GOAL_NAME.getColumnName() + "," + GoalsTable.GOAL_POINT.getColumnName() +
+        //if goalIsPartOf is null, then it means its a main goal
+        String selectQuery = "SELECT " + GoalsTable.ID.getColumnName() + "," + GoalsTable.GOAL_NAME.getColumnName() + "," + GoalsTable.GOAL_POINT.getColumnName() +
         " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsTable.GOAL_IS_PART_OF.getColumnName() + " is null";
         Cursor c = dbw.rawQuery(selectQuery, null);
         if (c.moveToFirst()) {
             do {
+                goalId = c.getInt(c.getColumnIndex(GoalsTable.ID.getColumnName()));
                 goalName = c.getString(c.getColumnIndex(GoalsTable.GOAL_NAME.getColumnName()));
                 goalPoints = c.getInt(c.getColumnIndex(GoalsTable.GOAL_POINT.getColumnName()));
-                MainGoal mainGoal = new MainGoal(goalName, goalPoints);
+                MainGoal mainGoal = new MainGoal(goalId,goalName, goalPoints);
                 mainGoals.add(mainGoal);
             }while(c.moveToNext());
         }

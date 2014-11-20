@@ -13,6 +13,11 @@ public class Goal {
         this.goalDescription = goalDescription;
         this.goalPoints = goalPoints;
     }
+    protected Goal(Integer id,String goalDescription,Integer goalPoints){
+       this.id = id;
+        this.goalDescription = goalDescription;
+        this.goalPoints = goalPoints;
+    }
 
     public Integer getId() {
         return id;

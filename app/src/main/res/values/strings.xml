@@ -8,5 +8,6 @@
     <string name="overview">Overview</string>
     <string name="goal_name">Goal name</string>
     <string name="goal_points">Goal points</string>
+    <string name="Is_subgoal_from">Is subgoal from</string>
 
 </resources>
