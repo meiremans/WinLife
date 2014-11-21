@@ -70,7 +70,7 @@ public class AddGoal extends Activity {
                 EditText mEditPoints   = (EditText)findViewById(R.id.points_for_goal);
                 Spinner mainGoalSpinner = (Spinner)findViewById(R.id.mainGoalSelection);
                 Goal goal;
-                if(!mainGoalSpinner.getSelectedItem().equals(emptyGoal)) {
+                if(mainGoalSpinner.getSelectedItem().equals(emptyGoal)) {
                     goal = new MainGoal(mEditGoal.getText().toString(), (Integer.parseInt(mEditPoints.getText().toString())));
                 } else {
                     goal = new SubGoal(mEditGoal.getText().toString(), (Integer.parseInt(mEditPoints.getText().toString())),((Goal)(mainGoalSpinner.getSelectedItem())).getId());

@@ -1,7 +1,5 @@
 package eu.meiremans.winlife.app.business;
 
-import java.nio.charset.IllegalCharsetNameException;
-
 /**
  * Created by Nick on 19/11/2014.LIKE A BOSS
  */
@@ -29,6 +27,6 @@ public class SubGoal extends Goal {
 
     @Override
     public String toString() {
-       return this.getGoalDescription();
+       return  this.getGoalDescription();
     }
 }

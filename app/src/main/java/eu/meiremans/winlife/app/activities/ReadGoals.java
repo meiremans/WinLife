@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 import eu.meiremans.winlife.app.R;
-import eu.meiremans.winlife.app.business.Goal;
 import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.MyExpandableListAdapter;
 import eu.meiremans.winlife.app.business.SubGoal;
@@ -24,7 +23,7 @@ import java.util.List;
 public class ReadGoals extends Activity {
     private ExpandableListView expandableListView;
     private List<MainGoal> mainGoals;
-    private  HashMap<MainGoal, List<SubGoal>> subGoals = new HashMap<MainGoal, List<SubGoal>>();
+    private  HashMap<MainGoal, List<SubGoal>> subGoals = new HashMap<>();
 
 
 
@@ -39,11 +38,10 @@ public class ReadGoals extends Activity {
         Log.d("Reading: ", "Reading all goals..");
         mainGoals = getAllGoals(this);
 
-        for(MainGoal s: mainGoals){
-            SubGoal subGoal = new SubGoal("trololol",(Integer)5005,1);
-            ArrayList <SubGoal>subGoalsA = new ArrayList<SubGoal>();
-            subGoalsA.add(subGoal);
-            subGoals.put(s,subGoalsA);
+        for(MainGoal mainGoal: mainGoals){
+            GoalDAO goalDAO = new GoalDAO(this);
+            ArrayList <SubGoal>subGoalsA =  goalDAO.getAllSubGoals(mainGoal);
+            subGoals.put(mainGoal,subGoalsA);
 
 
         }

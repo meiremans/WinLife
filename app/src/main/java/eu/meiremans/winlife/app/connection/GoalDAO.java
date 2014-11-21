@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import eu.meiremans.winlife.app.business.Goal;
 import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.SubGoal;
 import eu.meiremans.winlife.app.enums.GoalsTable;
@@ -55,7 +54,7 @@ public class GoalDAO {
         SQLiteDatabase dbw = db.getWritableDatabase();
         //if goalIsPartOf is null, then it means its a main goal
         String selectQuery = "SELECT " + GoalsTable.ID.getColumnName() + "," + GoalsTable.GOAL_NAME.getColumnName() + "," + GoalsTable.GOAL_POINT.getColumnName() + "," + GoalsTable.GOAL_IS_PART_OF.getColumnName() +
-                " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsTable.GOAL_IS_PART_OF.getColumnName() + maingoal.getId();
+                " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsTable.GOAL_IS_PART_OF.getColumnName() +"="+ maingoal.getId();
         Cursor c = dbw.rawQuery(selectQuery, null);
         if (c.moveToFirst()) {
             do {
