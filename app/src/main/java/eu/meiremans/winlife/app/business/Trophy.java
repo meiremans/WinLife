@@ -6,11 +6,28 @@ import eu.meiremans.winlife.app.enums.TrophyType;
  * Created by Nick on 21/11/2014.LIKE A BOSS
  */
 public class Trophy {
+    Integer Id;
     TrophyType trophyType;
     Boolean isCompleted;
     String trophyName;
     String trophyDescription;
 
+
+    public Trophy (TrophyType trophyType,String trophyName,String trophyDescription,Boolean isCompleted){
+        this.trophyType = trophyType;
+        this.trophyName = trophyName;
+        this.trophyDescription = trophyDescription;
+        this.isCompleted = isCompleted;
+    }
+
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
 
     public TrophyType getTrophyType() {
         return trophyType;

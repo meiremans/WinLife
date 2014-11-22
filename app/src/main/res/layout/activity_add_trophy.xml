@@ -39,7 +39,7 @@
             android:id="@+id/textView4"/>
     <RadioGroup
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" android:id="@+id/radioTrophy">
         <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,16 +49,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/silver"
-                android:id="@+id/radioButton3"/>
+                android:id="@+id/rdbSilver"/>
         <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gold"
-                android:id="@+id/radioButton4"/>
+                android:id="@+id/rdbGold"/>
     </RadioGroup>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_trophy"
-            android:id="@+id/button" android:layout_gravity="right"/>
+            android:id="@+id/btnAddTrophy" android:layout_gravity="right"/>
 </LinearLayout>
