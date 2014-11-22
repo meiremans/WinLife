@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.SubGoal;
-import eu.meiremans.winlife.app.enums.GoalsTable;
-import eu.meiremans.winlife.app.enums.WinLifeTables;
+import eu.meiremans.winlife.app.enums.database.GoalsColumns;
+import eu.meiremans.winlife.app.enums.database.WinLifeTables;
 
 import java.util.ArrayList;
 
@@ -28,14 +28,14 @@ public class GoalDAO {
         ArrayList<MainGoal> mainGoals = new ArrayList<>();
         SQLiteDatabase dbw = db.getWritableDatabase();
         //if goalIsPartOf is null, then it means its a main goal
-        String selectQuery = "SELECT " + GoalsTable.ID.getColumnName() + "," + GoalsTable.GOAL_NAME.getColumnName() + "," + GoalsTable.GOAL_POINT.getColumnName() +
-                " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsTable.GOAL_IS_PART_OF.getColumnName() + " is null";
+        String selectQuery = "SELECT " + GoalsColumns.ID.getColumnName() + "," + GoalsColumns.GOAL_NAME.getColumnName() + "," + GoalsColumns.GOAL_POINT.getColumnName() +
+                " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsColumns.GOAL_IS_PART_OF.getColumnName() + " is null";
         Cursor c = dbw.rawQuery(selectQuery, null);
         if (c.moveToFirst()) {
             do {
-                goalId = c.getInt(c.getColumnIndex(GoalsTable.ID.getColumnName()));
-                goalName = c.getString(c.getColumnIndex(GoalsTable.GOAL_NAME.getColumnName()));
-                goalPoints = c.getInt(c.getColumnIndex(GoalsTable.GOAL_POINT.getColumnName()));
+                goalId = c.getInt(c.getColumnIndex(GoalsColumns.ID.getColumnName()));
+                goalName = c.getString(c.getColumnIndex(GoalsColumns.GOAL_NAME.getColumnName()));
+                goalPoints = c.getInt(c.getColumnIndex(GoalsColumns.GOAL_POINT.getColumnName()));
                 MainGoal mainGoal = new MainGoal(goalId,goalName, goalPoints);
                 mainGoals.add(mainGoal);
             }while(c.moveToNext());
@@ -53,14 +53,14 @@ public class GoalDAO {
         ArrayList<SubGoal> subGoals = new ArrayList<>();
         SQLiteDatabase dbw = db.getWritableDatabase();
         //if goalIsPartOf is null, then it means its a main goal
-        String selectQuery = "SELECT " + GoalsTable.ID.getColumnName() + "," + GoalsTable.GOAL_NAME.getColumnName() + "," + GoalsTable.GOAL_POINT.getColumnName() + "," + GoalsTable.GOAL_IS_PART_OF.getColumnName() +
-                " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsTable.GOAL_IS_PART_OF.getColumnName() +"="+ maingoal.getId();
+        String selectQuery = "SELECT " + GoalsColumns.ID.getColumnName() + "," + GoalsColumns.GOAL_NAME.getColumnName() + "," + GoalsColumns.GOAL_POINT.getColumnName() + "," + GoalsColumns.GOAL_IS_PART_OF.getColumnName() +
+                " FROM " + WinLifeTables.GOALS.getTableName() + " WHERE " + GoalsColumns.GOAL_IS_PART_OF.getColumnName() +"="+ maingoal.getId();
         Cursor c = dbw.rawQuery(selectQuery, null);
         if (c.moveToFirst()) {
             do {
-                goalId = c.getInt(c.getColumnIndex(GoalsTable.ID.getColumnName()));
-                goalName = c.getString(c.getColumnIndex(GoalsTable.GOAL_NAME.getColumnName()));
-                goalPoints = c.getInt(c.getColumnIndex(GoalsTable.GOAL_POINT.getColumnName()));
+                goalId = c.getInt(c.getColumnIndex(GoalsColumns.ID.getColumnName()));
+                goalName = c.getString(c.getColumnIndex(GoalsColumns.GOAL_NAME.getColumnName()));
+                goalPoints = c.getInt(c.getColumnIndex(GoalsColumns.GOAL_POINT.getColumnName()));
                 SubGoal subGoal = new SubGoal(goalId,goalName, goalPoints,maingoal.getId());
                 subGoals.add(subGoal);
             }while(c.moveToNext());
@@ -77,8 +77,8 @@ public class GoalDAO {
 
         SQLiteDatabase dbw = db.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(GoalsTable.GOAL_NAME.getColumnName(), goal.getGoalDescription());
-        values.put(GoalsTable.GOAL_POINT.getColumnName(), goal.getGoalPoints());
+        values.put(GoalsColumns.GOAL_NAME.getColumnName(), goal.getGoalDescription());
+        values.put(GoalsColumns.GOAL_POINT.getColumnName(), goal.getGoalPoints());
         dbw.insert(WinLifeTables.GOALS.getTableName(), null, values);
         dbw.close(); // Closing database connection
     }
@@ -86,9 +86,9 @@ public class GoalDAO {
 
         SQLiteDatabase dbw = db.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(GoalsTable.GOAL_NAME.getColumnName(), goal.getGoalDescription());
-        values.put(GoalsTable.GOAL_POINT.getColumnName(), goal.getGoalPoints());
-        values.put(GoalsTable.GOAL_IS_PART_OF.getColumnName(), goal.getIsPartOf());
+        values.put(GoalsColumns.GOAL_NAME.getColumnName(), goal.getGoalDescription());
+        values.put(GoalsColumns.GOAL_POINT.getColumnName(), goal.getGoalPoints());
+        values.put(GoalsColumns.GOAL_IS_PART_OF.getColumnName(), goal.getIsPartOf());
         dbw.insert(WinLifeTables.GOALS.getTableName(), null, values);
         dbw.close(); // Closing database connection
     }

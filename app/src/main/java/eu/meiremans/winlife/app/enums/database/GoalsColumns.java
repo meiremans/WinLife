@@ -1,9 +1,9 @@
-package eu.meiremans.winlife.app.enums;
+package eu.meiremans.winlife.app.enums.database;
 
 /**
  * Created by Nick on 20/11/2014.LIKE A BOSS
  */
-public enum GoalsTable {
+public enum GoalsColumns {
     ID("id"),
     GOAL_NAME("goalName"),
     GOAL_POINT("goalPoint"),
@@ -11,7 +11,7 @@ public enum GoalsTable {
 
     private final String columnName;
 
-    private GoalsTable(final String columnName) {
+    private GoalsColumns(final String columnName) {
         this.columnName = columnName;
     }
     public String getColumnName() {

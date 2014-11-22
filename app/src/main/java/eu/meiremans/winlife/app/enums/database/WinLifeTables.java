@@ -1,10 +1,11 @@
-package eu.meiremans.winlife.app.enums;
+package eu.meiremans.winlife.app.enums.database;
 
 /**
  * Created by Nick on 20/11/2014.LIKE A BOSS
  */
 public enum WinLifeTables {
-    GOALS("goals");
+    GOALS("goals"),
+    TROPHIES("trophies");
 
     private final String tableName;
 
