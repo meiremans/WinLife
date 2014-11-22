@@ -12,5 +12,7 @@
     <string name="main_goal">main goal is:</string>
     <string name="choose_trophy_type">Choose Trophy Type</string>
     <string name="add_trophy">Add Trophy</string>
+    <string name="trophy_title">Trophy Title</string>
+    <string name="trophy_description">Trophy Description</string>
 
 </resources>

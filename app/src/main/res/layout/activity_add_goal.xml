@@ -11,11 +11,11 @@
     <TextView
         android:text="@string/add_goal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:id="@+id/textView"/>
+        android:layout_height="wrap_content" android:id="@+id/txtTrophyTitle"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/goal_to_add" android:layout_below="@+id/textView"
+            android:id="@+id/goal_to_add" android:layout_below="@+id/txtTrophyTitle"
             android:layout_alignEnd="@id/goal_to_add" android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/textView2"/>
     <EditText
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="@string/goal_name"
             android:id="@+id/textView2"
-            android:layout_below="@+id/textView" android:layout_alignParentStart="true"/>
+            android:layout_below="@+id/txtTrophyTitle" android:layout_alignParentStart="true"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
