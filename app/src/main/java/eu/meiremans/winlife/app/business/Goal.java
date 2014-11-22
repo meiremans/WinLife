@@ -1,9 +1,11 @@
 package eu.meiremans.winlife.app.business;
 
+import java.io.Serializable;
+
 /**
  * Created by Nick on 19/11/2014.LIKE A BOSS
  */
-public class Goal {
+public class Goal implements Serializable {
 
     Integer id;
     String goalDescription;

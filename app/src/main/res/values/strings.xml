@@ -9,5 +9,8 @@
     <string name="goal_name">Goal name</string>
     <string name="goal_points">Goal points</string>
     <string name="Is_subgoal_from">Is subgoal from</string>
+    <string name="main_goal">main goal is:</string>
+    <string name="choose_trophy_type">Choose Trophy Type</string>
+    <string name="add_trophy">Add Trophy</string>
 
 </resources>
