@@ -11,6 +11,7 @@ public class Trophy {
     Boolean isCompleted;
     String trophyName;
     String trophyDescription;
+    Integer mainGoalId;
 
 
     public Trophy (TrophyType trophyType,String trophyName,String trophyDescription,Boolean isCompleted){
@@ -20,6 +21,13 @@ public class Trophy {
         this.isCompleted = isCompleted;
     }
 
+    public Integer getMainGoalId() {
+        return mainGoalId;
+    }
+
+    public void setMainGoalId(Integer mainGoalId) {
+        this.mainGoalId = mainGoalId;
+    }
 
     public Integer getId() {
         return Id;
