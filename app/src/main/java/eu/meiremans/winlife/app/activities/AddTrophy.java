@@ -9,6 +9,7 @@ import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.Trophy;
 import eu.meiremans.winlife.app.connection.TrophyDAO;
 import eu.meiremans.winlife.app.enums.Intent_Extras;
+import eu.meiremans.winlife.app.enums.TrophyState;
 import eu.meiremans.winlife.app.enums.TrophyType;
 
 /**
@@ -52,7 +53,7 @@ addListenerOnButton();
                     default : trophyType = null;
                 }
 
-                Trophy trophy = new Trophy(trophyType,trophyTitle.getText().toString(),trophyDescription.getText().toString(),Boolean.FALSE);
+                Trophy trophy = new Trophy(trophyType,trophyTitle.getText().toString(),trophyDescription.getText().toString(), TrophyState.NOT_COMPLETED);
                 trophy.setMainGoalId(mainGoal.getId());
                 TrophyDAO trophyDAO = new TrophyDAO(getApplicationContext());
                 trophyDAO.addTrophy(trophy);

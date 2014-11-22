@@ -20,19 +20,19 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     private Context _context;
     private List<MainGoal> _listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<MainGoal, List<SubGoal>> _listDataChild;
+    private HashMap<MainGoal, List<Trophy>> _listDataChild;
 
     public MyExpandableListAdapter(Context context, List<MainGoal> listDataHeader,
-                                 HashMap<MainGoal, List<SubGoal>> listChildData) {
+                                 HashMap<MainGoal, List<Trophy>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
     }
 
     @Override
-    public Object getChild(int groupPosition, int childPosititon) {
+    public Object getChild(int groupPosition, int childPosition) {
         return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-                .get(childPosititon);
+                .get(childPosition);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final String childText = (String) ((SubGoal) getChild(groupPosition, childPosition)).toString();
+        final String childText = ((Trophy) getChild(groupPosition, childPosition)).getTrophyName();
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context

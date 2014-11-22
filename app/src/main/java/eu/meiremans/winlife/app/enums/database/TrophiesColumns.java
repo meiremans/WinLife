@@ -8,7 +8,7 @@ public enum TrophiesColumns {
     TROPHIES_TITLE("trophyTitle"),
     TROPHIES_DESCRIPTION("trophiesDescription"),
     TROPHIES_TYPE("trophyType"),
-    TROPHIES_IS_COMPLETED("trophyIsCompleted"),
+    TROPHIES_STATE("trophyState"),
     TROPHIES_GOAL("trophyGoal");
 
     private final String columnName;

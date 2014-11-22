@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class MainGoal extends Goal implements Serializable {
 
-ArrayList<SubGoal> subGoals = new ArrayList<>();
+ArrayList<Trophy> trophies = new ArrayList<>();
 
     public MainGoal(String goalDescription,Integer goalPoints){
         super(goalDescription,goalPoints);
@@ -17,8 +17,16 @@ ArrayList<SubGoal> subGoals = new ArrayList<>();
         super(id,goalDescription,goalPoints);
     }
 
-    public void addSubGoals(SubGoal subgoal){
-        subGoals.add(subgoal);
+    public void addTrophy(Trophy trophy){
+        trophies.add(trophy);
+    }
+
+    public void setTrophies(ArrayList<Trophy> trophies) {
+        this.trophies = trophies;
+    }
+
+    public ArrayList<Trophy> getTrophies() {
+        return trophies;
     }
 
     @Override

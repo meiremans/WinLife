@@ -79,7 +79,8 @@ public class GoalDAO {
         ContentValues values = new ContentValues();
         values.put(GoalsColumns.GOAL_NAME.getColumnName(), goal.getGoalDescription());
         values.put(GoalsColumns.GOAL_POINT.getColumnName(), goal.getGoalPoints());
-        dbw.insert(WinLifeTables.GOALS.getTableName(), null, values);
+        long id = dbw.insert(WinLifeTables.GOALS.getTableName(), null, values);
+        goal.setId(safeLongToInt(id));
         dbw.close(); // Closing database connection
     }
     public void addSubGoal(SubGoal goal){
@@ -92,7 +93,13 @@ public class GoalDAO {
         dbw.insert(WinLifeTables.GOALS.getTableName(), null, values);
         dbw.close(); // Closing database connection
     }
-
+    public static int safeLongToInt(long l) {
+        if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException
+                    (l + " cannot be cast to int without changing its value.");
+        }
+        return (int) l;
+    }
 
 
 

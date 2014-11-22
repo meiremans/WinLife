@@ -1,5 +1,6 @@
 package eu.meiremans.winlife.app.business;
 
+import eu.meiremans.winlife.app.enums.TrophyState;
 import eu.meiremans.winlife.app.enums.TrophyType;
 
 /**
@@ -8,17 +9,17 @@ import eu.meiremans.winlife.app.enums.TrophyType;
 public class Trophy {
     Integer Id;
     TrophyType trophyType;
-    Boolean isCompleted;
+    TrophyState trophyState;
     String trophyName;
     String trophyDescription;
     Integer mainGoalId;
 
 
-    public Trophy (TrophyType trophyType,String trophyName,String trophyDescription,Boolean isCompleted){
+    public Trophy (TrophyType trophyType,String trophyName,String trophyDescription,TrophyState trophyState){
         this.trophyType = trophyType;
         this.trophyName = trophyName;
         this.trophyDescription = trophyDescription;
-        this.isCompleted = isCompleted;
+        this.trophyState = trophyState;
     }
 
     public Integer getMainGoalId() {
@@ -45,12 +46,12 @@ public class Trophy {
         this.trophyType = trophyType;
     }
 
-    public Boolean getIsCompleted() {
-        return isCompleted;
+    public TrophyState getTrophyState() {
+        return trophyState;
     }
 
-    public void setIsCompleted(Boolean isCompleted) {
-        this.isCompleted = isCompleted;
+    public void setTrophyState(TrophyState trophyState) {
+        this.trophyState = trophyState;
     }
 
     public String getTrophyName() {

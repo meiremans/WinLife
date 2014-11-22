@@ -11,7 +11,10 @@ import eu.meiremans.winlife.app.R;
 import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.MyExpandableListAdapter;
 import eu.meiremans.winlife.app.business.SubGoal;
+import eu.meiremans.winlife.app.business.Trophy;
 import eu.meiremans.winlife.app.connection.GoalDAO;
+import eu.meiremans.winlife.app.connection.TrophyDAO;
+
 import java.util.HashMap;
 
 import java.util.ArrayList;
@@ -23,7 +26,7 @@ import java.util.List;
 public class ReadGoals extends Activity {
     private ExpandableListView expandableListView;
     private List<MainGoal> mainGoals;
-    private  HashMap<MainGoal, List<SubGoal>> subGoals = new HashMap<>();
+    private  HashMap<MainGoal, List<Trophy>> trophies = new HashMap<>();
 
 
 
@@ -39,9 +42,9 @@ public class ReadGoals extends Activity {
         mainGoals = getAllGoals(this);
 
         for(MainGoal mainGoal: mainGoals){
-            GoalDAO goalDAO = new GoalDAO(this);
-            ArrayList <SubGoal>subGoalsA =  goalDAO.getAllSubGoals(mainGoal);
-            subGoals.put(mainGoal,subGoalsA);
+            TrophyDAO trophyDAO = new TrophyDAO(this);
+            mainGoal.setTrophies(trophyDAO.getAllTrophiesForMainGoal(mainGoal));
+            trophies.put(mainGoal,mainGoal.getTrophies());
 
 
         }
@@ -53,7 +56,7 @@ public class ReadGoals extends Activity {
         expandableListView = (ExpandableListView) findViewById(R.id.overview);
 
 
-        MyExpandableListAdapter adapter = new MyExpandableListAdapter(this,mainGoals,subGoals);
+        MyExpandableListAdapter adapter = new MyExpandableListAdapter(this,mainGoals,trophies);
 
         expandableListView.setAdapter(adapter);
 
@@ -65,7 +68,7 @@ public class ReadGoals extends Activity {
                         getApplicationContext(),
                         mainGoals.get(groupPosition)
                                 + " : "
-                                + subGoals.get(
+                                + trophies.get(
                                 mainGoals.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT)
                         .show();
