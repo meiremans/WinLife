@@ -1,7 +1,9 @@
 package eu.meiremans.winlife.app.activities;
 
 import android.app.Activity;
+import android.media.Image;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import eu.meiremans.winlife.app.R;
 import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.enums.Intent_Extras;
@@ -25,4 +27,5 @@ public class AddTrophy extends Activity {
         this.setTitle("add trophy for " + mainGoal.getGoalDescription());
 
     }
-}
+
+    }

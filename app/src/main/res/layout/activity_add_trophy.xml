@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent" android:weightSum="1">
 
     <TextView
             android:layout_width="wrap_content"
@@ -37,24 +37,25 @@
             android:layout_height="wrap_content"
             android:text="@string/choose_trophy_type"
             android:id="@+id/textView4"/>
-    <GridLayout
+    <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-        <ImageButton
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:id="@+id/imgBronze" android:focusable="false" android:background="@drawable/trophy_bronze"
-                android:layout_row="0" android:layout_column="0"/>
-        <ImageButton
-                android:layout_width="79dp"
-                android:layout_height="79dp"
-                android:id="@+id/imgSilver" android:background="@drawable/trophy_silver"/>
-        <ImageButton
-                android:layout_width="84dp"
-                android:layout_height="84dp"
-                android:id="@+id/imgGold" android:layout_row="0" android:layout_column="2"
-                android:background="@drawable/trophy_gold"/>
-    </GridLayout>
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bronze"
+                android:id="@+id/rdbBronze"/>
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/silver"
+                android:id="@+id/radioButton3"/>
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gold"
+                android:id="@+id/radioButton4"/>
+    </RadioGroup>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

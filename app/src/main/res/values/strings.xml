@@ -14,5 +14,8 @@
     <string name="add_trophy">Add Trophy</string>
     <string name="trophy_title">Trophy Title</string>
     <string name="trophy_description">Trophy Description</string>
+    <string name="bronze">Bronze</string>
+    <string name="silver">Silver</string>
+    <string name="gold">Gold</string>
 
 </resources>
