@@ -16,13 +16,13 @@ public class AddTrophy extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_trophy);
-        //if b = zero, parameter forgotten to send
         Bundle b = getIntent().getExtras();
+        //if b = zero, parameter forgotten to send
         if (b == null) {
             throw new NullPointerException();
         }
-        MainGoal mainGoal = b.getParcelable(Intent_Extras.MAIN_GOAL.getId());
-this.setTitle("add trophy for " + mainGoal.getGoalDescription());
+        MainGoal mainGoal = (MainGoal) b.getSerializable(Intent_Extras.MAIN_GOAL.getId());
+        this.setTitle("add trophy for " + mainGoal.getGoalDescription());
 
     }
 }

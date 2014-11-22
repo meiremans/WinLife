@@ -17,26 +17,19 @@ import eu.meiremans.winlife.app.business.Goal;
 import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.SubGoal;
 import eu.meiremans.winlife.app.connection.GoalDAO;
+import eu.meiremans.winlife.app.enums.Intent_Extras;
 
 import java.util.List;
 
 
 public class AddGoal extends Activity {
     MainGoal emptyGoal = new MainGoal(0,"This is a Main Goal",0);
-
+    MainGoal mainGoal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_goal);
         GoalDAO goalDAO = new GoalDAO(this);
-        List<MainGoal> mainGoals = goalDAO.getAllMainGoals();
-
-        mainGoals.add(0,emptyGoal);
-        ArrayAdapter<MainGoal> adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, mainGoals);
-        Spinner mainGoalSpinner =  (Spinner) findViewById(R.id.mainGoalSelection);
-
-        mainGoalSpinner.setAdapter(adapter);
 
 
         addListenerOnButton();
@@ -44,13 +37,11 @@ public class AddGoal extends Activity {
 
     // Adding new goal
     public void add_Goal(Context context,Goal goal) {
-        if (goal instanceof MainGoal) {
+
             GoalDAO goalDAO = new GoalDAO(context);
             goalDAO.addMainGoal((MainGoal)goal);
-        }else{
-            GoalDAO goalDAO = new GoalDAO(context);
-            goalDAO.addSubGoal((SubGoal)goal);
-        }
+        mainGoal = (MainGoal)goal;
+
     }
 
     @Override
@@ -67,17 +58,16 @@ public class AddGoal extends Activity {
             @Override
             public void onClick(View v) {
                 EditText mEditGoal   = (EditText)findViewById(R.id.goal_to_add);
-                EditText mEditPoints   = (EditText)findViewById(R.id.points_for_goal);
-                Spinner mainGoalSpinner = (Spinner)findViewById(R.id.mainGoalSelection);
+
+
                 Goal goal;
-                if(mainGoalSpinner.getSelectedItem().equals(emptyGoal)) {
-                    goal = new MainGoal(mEditGoal.getText().toString(), (Integer.parseInt(mEditPoints.getText().toString())));
-                } else {
-                    goal = new SubGoal(mEditGoal.getText().toString(), (Integer.parseInt(mEditPoints.getText().toString())),((Goal)(mainGoalSpinner.getSelectedItem())).getId());
-                }
-                add_Goal(AddGoal.this,goal);
-                Intent intent = new Intent(getApplicationContext() , ReadGoals.class);
-                AddGoal.this.startActivity(intent);
+
+                    goal = new MainGoal(mEditGoal.getText().toString(), 5000);
+
+                add_Goal(getApplicationContext(),goal);
+                Intent intent = new Intent(getApplicationContext(), AddTrophy.class);
+                intent.putExtra(Intent_Extras.MAIN_GOAL.getId(),mainGoal);
+                startActivity(intent);
 
             }
         });

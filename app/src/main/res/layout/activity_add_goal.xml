@@ -18,42 +18,18 @@
             android:id="@+id/goal_to_add" android:layout_below="@+id/txtTrophyTitle"
             android:layout_alignEnd="@id/goal_to_add" android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/textView2"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:ems="10"
-            android:id="@+id/points_for_goal"
-            android:layout_below="@+id/goal_to_add"
-            android:layout_toEndOf="@+id/textView3" android:layout_alignEnd="@+id/goal_to_add"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/goal_name"
             android:id="@+id/textView2"
             android:layout_below="@+id/txtTrophyTitle" android:layout_alignParentStart="true"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/goal_points"
-            android:id="@+id/textView3" android:layout_alignBottom="@+id/points_for_goal"
-            android:layout_alignParentStart="true" android:layout_toStartOf="@+id/goal_to_add"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add Goal"
             android:id="@+id/btnAddGoal"
-            android:layout_marginTop="82dp" android:layout_below="@+id/points_for_goal"
-            android:layout_alignEnd="@+id/points_for_goal"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Is_subgoal_from"
-            android:id="@+id/textView4" android:layout_below="@+id/textView3" android:layout_alignParentStart="true"/>
-    <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/mainGoalSelection" android:layout_below="@+id/textView4" android:layout_alignParentStart="true"
-            android:spinnerMode="dropdown"/>
+            android:layout_marginTop="82dp"
+            android:layout_below="@+id/goal_to_add"/>
 
 </RelativeLayout>

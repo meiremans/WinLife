@@ -1,11 +1,12 @@
 package eu.meiremans.winlife.app.business;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Nick on 16/11/2014.LIKE A BOSS
  */
-public class MainGoal extends Goal {
+public class MainGoal extends Goal implements Serializable {
 
 ArrayList<SubGoal> subGoals = new ArrayList<>();
 
