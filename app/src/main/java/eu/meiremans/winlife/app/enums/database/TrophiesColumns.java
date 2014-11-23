@@ -6,7 +6,7 @@ package eu.meiremans.winlife.app.enums.database;
 public enum TrophiesColumns {
     ID("id"),
     TROPHIES_TITLE("trophyTitle"),
-    TROPHIES_DESCRIPTION("trophiesDescription"),
+    TROPHIES_DESCRIPTION("trophyDescription"),
     TROPHIES_TYPE("trophyType"),
     TROPHIES_STATE("trophyState"),
     TROPHIES_GOAL("trophyGoal");

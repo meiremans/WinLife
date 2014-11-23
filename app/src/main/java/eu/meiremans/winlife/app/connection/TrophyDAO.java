@@ -32,7 +32,7 @@ public class TrophyDAO {
         values.put(TrophiesColumns.TROPHIES_TYPE.getColumnName(), trophy.getTrophyType().name());//used the name for storing in the db, most convienent solution;
         values.put(TrophiesColumns.TROPHIES_STATE.getColumnName(), trophy.getTrophyState().name());
         values.put(TrophiesColumns.TROPHIES_GOAL.getColumnName(), trophy.getMainGoalId());
-        dbw.insert(WinLifeTables.GOALS.getTableName(), null, values);
+        dbw.insert(WinLifeTables.TROPHIES.getTableName(), null, values);
         dbw.close(); // Closing database connection
     }
 
@@ -48,7 +48,7 @@ public class TrophyDAO {
 
         String selectQuery = "SELECT " + TrophiesColumns.ID.getColumnName() + "," + TrophiesColumns.TROPHIES_TITLE.getColumnName() + "," + TrophiesColumns.TROPHIES_DESCRIPTION.getColumnName() + "," + TrophiesColumns.TROPHIES_TYPE.getColumnName()
                 + "," + TrophiesColumns.TROPHIES_STATE.getColumnName() +"," + TrophiesColumns.TROPHIES_GOAL.getColumnName() +
-                " FROM " + WinLifeTables.TROPHIES.getTableName(); //+ " WHERE " + TrophiesColumns.TROPHIES_GOAL.getColumnName() +"="+ mainGoal.getId();
+                " FROM " + WinLifeTables.TROPHIES.getTableName() + " WHERE " + TrophiesColumns.TROPHIES_GOAL.getColumnName() +"="+ mainGoal.getId();
         Cursor c = dbw.rawQuery(selectQuery, null);
         if (c.moveToFirst()) {
             do {
@@ -56,7 +56,7 @@ public class TrophyDAO {
                 trophyTitle = c.getString(c.getColumnIndex(TrophiesColumns.TROPHIES_TITLE.getColumnName()));
                 trophyDescription = c.getString(c.getColumnIndex(TrophiesColumns.TROPHIES_DESCRIPTION.getColumnName()));
                 trophyType = TrophyType.valueOf(c.getString((c.getColumnIndex(TrophiesColumns.TROPHIES_TYPE.getColumnName()))));
-                trophyState = TrophyState.valueOf(c.getString(c.getColumnIndex(TrophiesColumns.TROPHIES_DESCRIPTION.getColumnName())));
+                trophyState = TrophyState.valueOf(c.getString(c.getColumnIndex(TrophiesColumns.TROPHIES_STATE.getColumnName())));
                 Trophy trophy = new Trophy(trophyType,trophyTitle,trophyDescription,trophyState);
                 trophy.setId(trophyId);
                 trophies.add(trophy);
