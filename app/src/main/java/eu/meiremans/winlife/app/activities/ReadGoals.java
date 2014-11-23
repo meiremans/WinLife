@@ -10,14 +10,12 @@ import android.widget.Toast;
 import eu.meiremans.winlife.app.R;
 import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.MyExpandableListAdapter;
-import eu.meiremans.winlife.app.business.SubGoal;
 import eu.meiremans.winlife.app.business.Trophy;
 import eu.meiremans.winlife.app.connection.GoalDAO;
 import eu.meiremans.winlife.app.connection.TrophyDAO;
 
 import java.util.HashMap;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,6 +59,7 @@ public class ReadGoals extends Activity {
         expandableListView.setAdapter(adapter);
 
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
@@ -74,8 +73,11 @@ public class ReadGoals extends Activity {
                         .show();
                 return false;
             }
+
         });
     }
+
+
 
     public List<MainGoal> getAllGoals(Context context) {
         GoalDAO goalDAO = new GoalDAO(context);

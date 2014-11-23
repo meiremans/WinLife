@@ -16,4 +16,8 @@
           android:title="@string/add_goal"
           android:orderInCategory="100"
           android:showAsAction="never" />
+    <item android:id="@+id/view_database"
+          android:title="view database"
+          android:orderInCategory="100"
+          android:showAsAction="never" />
 </menu>

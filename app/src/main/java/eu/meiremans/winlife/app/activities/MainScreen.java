@@ -43,6 +43,10 @@ public class MainScreen extends Activity {
                 Intent add_goal_intent = new Intent(this, AddGoal.class);
                 this.startActivity(add_goal_intent);
                 break;
+            case R.id.view_database:
+                Intent database_intent = new Intent(this, AndroidDatabaseManager.class);
+                this.startActivity(database_intent);
+                break;
             case R.id.action_settings:break;
 
 
