@@ -19,6 +19,7 @@
         <activity android:name=".activities.ReadGoals"/>
         <activity android:name=".activities.AddGoal"/>
         <activity android:name=".activities.AddTrophy"/>
+        <activity android:name=".activities.Trophy_Details"/>
         <activity android:name=".activities.AndroidDatabaseManager"/>
     </application>
 

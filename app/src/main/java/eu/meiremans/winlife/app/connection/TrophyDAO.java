@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.Trophy;
-import eu.meiremans.winlife.app.enums.TrophyState;
-import eu.meiremans.winlife.app.enums.TrophyType;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
 import eu.meiremans.winlife.app.enums.database.TrophiesColumns;
 import eu.meiremans.winlife.app.enums.database.WinLifeTables;
 
@@ -65,6 +65,17 @@ public class TrophyDAO {
         c.close();
 mainGoal.setTrophies(trophies);
         return trophies;
+
+    }
+    public void changeTrophyState(Trophy trophy){
+
+        SQLiteDatabase dbw = db.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TrophiesColumns.TROPHIES_STATE.getColumnName(), trophy.getTrophyState().name());
+        dbw.update(WinLifeTables.TROPHIES.getTableName() , values, TrophiesColumns.ID.getColumnName() + " =?" , new String[]{"" + trophy.getId()});
+        dbw.close(); // Closing database connection
+
+
 
     }
 }

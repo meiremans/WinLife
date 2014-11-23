@@ -2,6 +2,7 @@ package eu.meiremans.winlife.app.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,7 @@ import eu.meiremans.winlife.app.business.MyExpandableListAdapter;
 import eu.meiremans.winlife.app.business.Trophy;
 import eu.meiremans.winlife.app.connection.GoalDAO;
 import eu.meiremans.winlife.app.connection.TrophyDAO;
+import eu.meiremans.winlife.app.enums.Intent_Extras;
 
 import java.util.HashMap;
 
@@ -73,6 +75,11 @@ public class ReadGoals extends Activity {
                                 mainGoals.get(groupPosition)).get(
                                 childPosition).getTrophyDescription(), Toast.LENGTH_SHORT)
                         .show();
+                Intent intent = new Intent(getApplicationContext(), Trophy_Details.class);
+                intent.putExtra(Intent_Extras.TROPHY.getId(),trophies.get(
+                        mainGoals.get(groupPosition)).get(
+                        childPosition));
+                startActivity(intent);
                 return false;
             }
 

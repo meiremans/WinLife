@@ -1,12 +1,14 @@
 package eu.meiremans.winlife.app.business;
 
-import eu.meiremans.winlife.app.enums.TrophyState;
-import eu.meiremans.winlife.app.enums.TrophyType;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
+
+import java.io.Serializable;
 
 /**
  * Created by Nick on 21/11/2014.LIKE A BOSS
  */
-public class Trophy {
+public class Trophy implements Serializable{
     Integer Id;
     TrophyType trophyType;
     TrophyState trophyState;

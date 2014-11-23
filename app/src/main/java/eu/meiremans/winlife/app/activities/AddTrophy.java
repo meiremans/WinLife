@@ -10,8 +10,8 @@ import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.Trophy;
 import eu.meiremans.winlife.app.connection.TrophyDAO;
 import eu.meiremans.winlife.app.enums.Intent_Extras;
-import eu.meiremans.winlife.app.enums.TrophyState;
-import eu.meiremans.winlife.app.enums.TrophyType;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
 
 /**
  * Created by Nick on 22/11/2014.LIKE A BOSS
