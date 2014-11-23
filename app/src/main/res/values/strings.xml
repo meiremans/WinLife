@@ -17,5 +17,6 @@
     <string name="bronze">Bronze</string>
     <string name="silver">Silver</string>
     <string name="gold">Gold</string>
+    <string name="trophy_finish_adding">Done adding trophies</string>
 
 </resources>

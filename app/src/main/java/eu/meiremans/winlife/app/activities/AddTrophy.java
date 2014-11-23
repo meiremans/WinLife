@@ -1,6 +1,7 @@
 package eu.meiremans.winlife.app.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -29,10 +30,10 @@ public class AddTrophy extends Activity {
         }
         mainGoal = (MainGoal) b.getSerializable(Intent_Extras.MAIN_GOAL.getId());
         this.setTitle("add trophy for " + mainGoal.getGoalDescription());
-addListenerOnButton();
+addListenerOnButtons();
     }
 
-    public void addListenerOnButton() {
+    public void addListenerOnButtons() {
 
         Button button = (Button) findViewById(R.id.btnAddTrophy);
         button.setOnClickListener(new View.OnClickListener() {
@@ -59,8 +60,26 @@ addListenerOnButton();
                 trophyDAO.addTrophy(trophy);
                 Toast.makeText(getApplicationContext(),trophy.getTrophyName() +" is added",Toast.LENGTH_LONG).show();
 
+                trophyTitle.setText("");
+                trophyDescription.setText("");
+                radioTrophyGroup.clearCheck();
+
             }
         });
+
+        Button btnFinished = (Button) findViewById(R.id.btnFinishedTrophyAdding);
+        btnFinished.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ReadGoals.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
+
     }
 
     }

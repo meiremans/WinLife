@@ -65,11 +65,13 @@ public class ReadGoals extends Activity {
                                         int groupPosition, int childPosition, long id) {
                 Toast.makeText(
                         getApplicationContext(),
-                        mainGoals.get(groupPosition)
+                        trophies.get(
+                                mainGoals.get(groupPosition)).get(
+                                childPosition).getTrophyName()
                                 + " : "
                                 + trophies.get(
                                 mainGoals.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT)
+                                childPosition).getTrophyDescription(), Toast.LENGTH_SHORT)
                         .show();
                 return false;
             }
