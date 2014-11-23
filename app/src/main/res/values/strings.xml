@@ -20,5 +20,8 @@
     <string name="trophy_finish_adding">Done adding trophies</string>
     <string name="trophy_type">Trophy Type</string>
     <string name="trophy_completed">Trophy Completed</string>
+    <string name="total_points">Total Points:</string>
+    <string name="level">Level:</string>
+    <string name="point_until_next_level">Point until next level:</string>
 
 </resources>

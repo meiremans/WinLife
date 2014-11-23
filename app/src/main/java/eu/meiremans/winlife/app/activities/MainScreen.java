@@ -6,8 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import eu.meiremans.winlife.app.R;
 import eu.meiremans.winlife.app.connection.MyDatabase;
+import org.w3c.dom.Text;
 
 /**
  * Created by Nick on 19/11/2014.LIKE A BOSS
@@ -18,11 +20,23 @@ public class MainScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TextView totalPoints = (TextView)findViewById(R.id.txtTotalPoints);
+        TextView level = (TextView)findViewById(R.id.txtLevel);
+        TextView pointsToNextLevel = (TextView)findViewById(R.id.txtPointsToNextLevel);
+        TextView numberBronze = (TextView)findViewById(R.id.txtNumberBronze);
+        TextView numberSilver = (TextView)findViewById(R.id.txtNumberSilver);
+        TextView numberGold = (TextView)findViewById(R.id.txtNumberGold);
+
+
+
+
 
         //initialize database on first run(Otherwise this happens on first transaction & this takes a while
         db = new MyDatabase(this);
         SQLiteDatabase dbw = db.getWritableDatabase();
         dbw.close();
+
+
 
     }
     @Override
