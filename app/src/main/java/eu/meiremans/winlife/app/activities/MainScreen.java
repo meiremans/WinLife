@@ -8,7 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import eu.meiremans.winlife.app.R;
+import eu.meiremans.winlife.app.business.TotalPoints;
 import eu.meiremans.winlife.app.connection.MyDatabase;
+import eu.meiremans.winlife.app.connection.TotalPointsDAO;
 import org.w3c.dom.Text;
 
 /**
@@ -20,12 +22,25 @@ public class MainScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TextView totalPoints = (TextView)findViewById(R.id.txtTotalPoints);
+        setContentView(R.layout.activity_main_screen);
+        TextView totalPointsView = (TextView)findViewById(R.id.txtTotalPoints);
         TextView level = (TextView)findViewById(R.id.txtLevel);
         TextView pointsToNextLevel = (TextView)findViewById(R.id.txtPointsToNextLevel);
         TextView numberBronze = (TextView)findViewById(R.id.txtNumberBronze);
         TextView numberSilver = (TextView)findViewById(R.id.txtNumberSilver);
         TextView numberGold = (TextView)findViewById(R.id.txtNumberGold);
+
+
+        TotalPoints totalPoints = new TotalPoints();
+        TotalPointsDAO totalPointsDAO = new TotalPointsDAO(this);
+        totalPoints = totalPointsDAO.getCountAllTrophies();
+
+        totalPointsView.setText(totalPoints.getTotalPoints()+"");
+        level.setText(totalPoints.getCurrentLevel().getLevelString());
+        pointsToNextLevel.setText(totalPoints.getPointsToNextLevel()+"");
+        numberBronze.setText(totalPoints.getNumberBronze()+"");
+        numberSilver.setText(totalPoints.getNumberSilver()+"");
+        numberGold.setText(totalPoints.getNumberGold()+"");
 
 
 
