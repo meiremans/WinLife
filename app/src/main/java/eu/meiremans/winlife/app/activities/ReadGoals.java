@@ -11,7 +11,7 @@ import android.widget.Toast;
 import eu.meiremans.winlife.app.R;
 import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.MyExpandableListAdapter;
-import eu.meiremans.winlife.app.business.Trophy;
+import eu.meiremans.winlife.app.business.Trophies.Trophy;
 import eu.meiremans.winlife.app.connection.GoalDAO;
 import eu.meiremans.winlife.app.connection.TrophyDAO;
 import eu.meiremans.winlife.app.enums.Intent_Extras;

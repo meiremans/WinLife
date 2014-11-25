@@ -1,5 +1,7 @@
 package eu.meiremans.winlife.app.business;
 
+import eu.meiremans.winlife.app.business.Trophies.Trophy;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 

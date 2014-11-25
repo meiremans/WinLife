@@ -6,7 +6,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import eu.meiremans.winlife.app.R;
-import eu.meiremans.winlife.app.business.Trophy;
+import eu.meiremans.winlife.app.business.Trophies.Trophy;
 import eu.meiremans.winlife.app.connection.TrophyDAO;
 import eu.meiremans.winlife.app.enums.Intent_Extras;
 import eu.meiremans.winlife.app.enums.Trophies.TrophyState;

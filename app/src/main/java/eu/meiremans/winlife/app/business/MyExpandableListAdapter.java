@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 import eu.meiremans.winlife.app.R;
+import eu.meiremans.winlife.app.business.Trophies.Trophy;
 
 import java.util.HashMap;
 import java.util.List;

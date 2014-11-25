@@ -1,4 +1,4 @@
-package eu.meiremans.winlife.app.business;
+package eu.meiremans.winlife.app.business.Trophies;
 
 import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
 import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
