@@ -9,7 +9,9 @@ public enum TrophiesColumns {
     TROPHIES_DESCRIPTION("trophyDescription"),
     TROPHIES_TYPE("trophyType"),
     TROPHIES_STATE("trophyState"),
-    TROPHIES_GOAL("trophyGoal");
+    TROPHIES_GOAL("trophyGoal"),
+    TROPHIES_CURRENT_DAY_COUNT("trophyCurrentDayCount"),
+    TROPHIES_TOTAL_DAY_COUNT("trophyTotalDayCount");
 
     private final String columnName;
 

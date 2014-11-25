@@ -6,6 +6,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import eu.meiremans.winlife.app.R;
+import eu.meiremans.winlife.app.business.Trophies.DailyCountTrophy;
 import eu.meiremans.winlife.app.business.Trophies.Trophy;
 import eu.meiremans.winlife.app.connection.TrophyDAO;
 import eu.meiremans.winlife.app.enums.Intent_Extras;
@@ -25,12 +26,24 @@ public class Trophy_Details extends Activity {
         final TextView title = (TextView)findViewById(R.id.txtTrophyTitle);
         final TextView description = (TextView)findViewById(R.id.txtTrophyDescription);
         final TextView type = (TextView)findViewById(R.id.txtTrophyType);
+        final TextView days = (TextView)findViewById(R.id.trophyDays);
+        final TextView trophyDaysLabel = (TextView)findViewById(R.id.txtTrophyDaysLabel);
+
         Bundle b = getIntent().getExtras();
         //if b = zero, parameter forgotten to send
         if (b == null) {
             throw new NullPointerException();
         }
         trophy = (Trophy) b.getSerializable(Intent_Extras.TROPHY.getId());
+        if (trophy instanceof  DailyCountTrophy) {
+        days.setText(((DailyCountTrophy) trophy).getDayCount() + "/" + ((DailyCountTrophy) trophy).getEndDayStreak());
+        }else{
+            days.setText("");
+            trophyDaysLabel.setText("");
+        }
+
+
+
         this.setTitle("Trophy details from " + trophy.getTrophyName());
         title.append(trophy.getTrophyName());
         description.append(trophy.getTrophyDescription());

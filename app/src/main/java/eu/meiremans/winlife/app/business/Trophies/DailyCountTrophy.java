@@ -9,7 +9,8 @@ import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
 public class DailyCountTrophy extends Trophy {
     Boolean alreadyAskedToday;
     Integer dayCount;
- 
+    Integer endDayStreak;
+
     public DailyCountTrophy(TrophyType trophyType,String trophyName,String trophyDescription,TrophyState trophyState,Boolean alreadyAskedToday,Integer dayCount){
         super(trophyType,trophyName,trophyDescription,trophyState);
         this.alreadyAskedToday = alreadyAskedToday;
@@ -32,5 +33,11 @@ public class DailyCountTrophy extends Trophy {
         this.dayCount = dayCount;
     }
 
+    public Integer getEndDayStreak() {
+        return endDayStreak;
+    }
 
+    public void setEndDayStreak(Integer endDayStreak) {
+        this.endDayStreak = endDayStreak;
+    }
 }

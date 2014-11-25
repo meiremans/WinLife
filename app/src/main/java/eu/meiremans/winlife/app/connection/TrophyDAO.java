@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import eu.meiremans.winlife.app.business.MainGoal;
+import eu.meiremans.winlife.app.business.Trophies.DailyCountTrophy;
 import eu.meiremans.winlife.app.business.Trophies.Trophy;
 import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
 import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
@@ -25,6 +26,7 @@ public class TrophyDAO {
 
     public void addTrophy(Trophy trophy){
 
+
         SQLiteDatabase dbw = db.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(TrophiesColumns.TROPHIES_TITLE.getColumnName(), trophy.getTrophyName());
@@ -32,6 +34,25 @@ public class TrophyDAO {
         values.put(TrophiesColumns.TROPHIES_TYPE.getColumnName(), trophy.getTrophyType().name());//used the name for storing in the db, most convienent solution;
         values.put(TrophiesColumns.TROPHIES_STATE.getColumnName(), trophy.getTrophyState().name());
         values.put(TrophiesColumns.TROPHIES_GOAL.getColumnName(), trophy.getMainGoalId());
+        if(trophy instanceof DailyCountTrophy){
+            values.put(TrophiesColumns.TROPHIES_CURRENT_DAY_COUNT.getColumnName(), ((DailyCountTrophy) trophy).getDayCount());
+            values.put(TrophiesColumns.TROPHIES_TOTAL_DAY_COUNT.getColumnName(), ((DailyCountTrophy)trophy).getEndDayStreak());
+        }
+
+        dbw.insert(WinLifeTables.TROPHIES.getTableName(), null, values);
+        dbw.close(); // Closing database connection
+    }
+
+    public void addDailyCountTrophy(DailyCountTrophy trophy){
+
+        SQLiteDatabase dbw = db.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TrophiesColumns.TROPHIES_TITLE.getColumnName(), trophy.getTrophyName());
+        values.put(TrophiesColumns.TROPHIES_DESCRIPTION.getColumnName(), trophy.getTrophyDescription());
+        values.put(TrophiesColumns.TROPHIES_TYPE.getColumnName(), trophy.getTrophyType().name());//used the name for storing in the db, most convenient solution;
+        values.put(TrophiesColumns.TROPHIES_STATE.getColumnName(), trophy.getTrophyState().name());
+        values.put(TrophiesColumns.TROPHIES_GOAL.getColumnName(), trophy.getMainGoalId());
+
         dbw.insert(WinLifeTables.TROPHIES.getTableName(), null, values);
         dbw.close(); // Closing database connection
     }
