@@ -54,7 +54,7 @@ public class TrophyDAO {
         values.put(TrophiesColumns.TROPHIES_GOAL.getColumnName(), trophy.getMainGoalId());
 
         dbw.insert(WinLifeTables.TROPHIES.getTableName(), null, values);
-        dbw.close(); // Closing database connection
+        dbw.close();    // Closing database connection
     }
 
     public ArrayList<Trophy> getAllTrophiesForMainGoal(MainGoal mainGoal){
