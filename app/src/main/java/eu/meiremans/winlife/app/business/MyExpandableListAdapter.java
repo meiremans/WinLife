@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import eu.meiremans.winlife.app.R;
 import eu.meiremans.winlife.app.business.Trophies.Trophy;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
 
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +49,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         final String childText = ((Trophy) getChild(groupPosition, childPosition)).getTrophyName();
-
+        Trophy trophy = (Trophy) getChild(groupPosition, childPosition);
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -57,6 +60,19 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
                 .findViewById(R.id.lblListItem);
 
         txtListChild.setText(childText);
+        ImageView iv = (ImageView) convertView.findViewById(R.id.trophy);
+        iv.setImageResource(R.drawable.trophy_black);
+        if(trophy.getTrophyState() == TrophyState.COMPLETED){
+            if(trophy.getTrophyType() == TrophyType.BRONZE)
+                iv.setImageResource(R.drawable.trophy_bronze);
+
+            if(trophy.getTrophyType() == TrophyType.SILVER)
+                iv.setImageResource(R.drawable.trophy_silver);
+
+            if(trophy.getTrophyType() == TrophyType.GOLD)
+                iv.setImageResource(R.drawable.trophy_gold);
+
+        }
         return convertView;
     }
 
@@ -95,6 +111,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
                 .findViewById(R.id.lblListHeader);
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
+
 
         return convertView;
     }
