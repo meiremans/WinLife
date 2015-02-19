@@ -9,7 +9,7 @@
     tools:context=".AddGoal">
 
     <TextView
-        android:text="@string/overview"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:id="@+id/txtTrophyTitle"/>
     <ExpandableListView

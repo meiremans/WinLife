@@ -14,12 +14,11 @@ import eu.meiremans.winlife.app.business.TotalPoints;
 import eu.meiremans.winlife.app.connection.MyDatabase;
 import eu.meiremans.winlife.app.connection.TotalPointsDAO;
 import eu.meiremans.winlife.app.enums.Trophies.TrophyLevel;
-import org.w3c.dom.Text;
 
 /**
  * Created by Nick on 19/11/2014.LIKE A BOSS
  */
-public class MainScreen extends Activity {
+public class Profile extends Activity {
 
     private MyDatabase db;
     @Override
@@ -40,7 +39,7 @@ refreshView();
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_screen, menu);
+        getMenuInflater().inflate(R.menu.menu_profile, menu);
         return true;
     }
 
@@ -75,7 +74,7 @@ refreshView();
     }
 
     private void refreshView(){
-        setContentView(R.layout.activity_main_screen);
+        setContentView(R.layout.activity_profile);
         TextView totalPointsView = (TextView)findViewById(R.id.txtTotalPoints);
         TextView level = (TextView)findViewById(R.id.txtLevel);
         TextView pointsToNextLevel = (TextView)findViewById(R.id.txtPointsToNextLevel);

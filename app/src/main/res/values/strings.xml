@@ -22,6 +22,7 @@
     <string name="trophy_completed">Trophy Completed</string>
     <string name="total_points">Total Points:</string>
     <string name="level">Level:</string>
+    <string name="profile">Profile:</string>
     <string name="point_until_next_level">Point until next level:</string>
 
 </resources>

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
@@ -94,6 +96,30 @@ public class ReadGoals extends Activity {
         MyExpandableListAdapter adapter = new MyExpandableListAdapter(this,mainGoals,trophies);
 
         expandableListView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_overview, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.action_profile:
+                Intent action_overview_intent = new Intent(this, Profile.class);
+                this.startActivity(action_overview_intent);
+                break;
+            case R.id.action_settings:break;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        return true;
     }
 
     private void readGoals(){

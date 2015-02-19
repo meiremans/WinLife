@@ -66,7 +66,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         iv.setImageResource(R.drawable.trophy_black);
         if(trophy.getTrophyState() == TrophyState.COMPLETED){
             if(trophy.getTrophyType() == TrophyType.BRONZE)
-                iv.setImageResource(R.drawable.trophy_bronze);
+                iv.setImageResource(R.drawable.bronze);
 
             if(trophy.getTrophyType() == TrophyType.SILVER)
                 iv.setImageResource(R.drawable.trophy_silver);
