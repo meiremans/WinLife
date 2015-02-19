@@ -39,19 +39,8 @@ public class ReadGoals extends Activity {
 
         // Reading all goals
         Log.d("Reading: ", "Reading all goals..");
-        mainGoals = getAllGoals(this);
 
-        for(MainGoal mainGoal: mainGoals){
-            TrophyDAO trophyDAO = new TrophyDAO(this);
-            mainGoal.setTrophies(trophyDAO.getAllTrophiesForMainGoal(mainGoal));
-            trophies.put(mainGoal,mainGoal.getTrophies());
-
-
-        }
-
-
-
-
+        readGoals();
 
         expandableListView = (ExpandableListView) findViewById(R.id.overview);
 
@@ -92,6 +81,29 @@ public class ReadGoals extends Activity {
         GoalDAO goalDAO = new GoalDAO(context);
       return  goalDAO.getAllMainGoals();
 
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+       readGoals();
+        expandableListView = (ExpandableListView) findViewById(R.id.overview);
+
+
+        MyExpandableListAdapter adapter = new MyExpandableListAdapter(this,mainGoals,trophies);
+
+        expandableListView.setAdapter(adapter);
+    }
+
+    private void readGoals(){
+        mainGoals = getAllGoals(this);
+
+        for(MainGoal mainGoal: mainGoals){
+            TrophyDAO trophyDAO = new TrophyDAO(this);
+            mainGoal.setTrophies(trophyDAO.getAllTrophiesForMainGoal(mainGoal));
+            trophies.put(mainGoal,mainGoal.getTrophies());
+        }
     }
 
 
