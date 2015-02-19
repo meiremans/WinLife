@@ -45,7 +45,7 @@ addListenerOnButtons();
                 RadioButton radioTrophyButton = (RadioButton) findViewById(radioTrophyGroup.getCheckedRadioButtonId());
 
 
-                //convert the ID of the radiobutton to TrophyType enum(OMG THIS IS DIRTY?!?)
+                //convert the ID of the radiobutton to TrophyType enum
                 TrophyType trophyType;
                 switch (radioTrophyButton.getId()){
                     case R.id.rdbBronze: trophyType = TrophyType.BRONZE;break;

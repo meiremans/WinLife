@@ -14,6 +14,7 @@ import eu.meiremans.winlife.app.business.Trophies.Trophy;
 import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
 import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -102,6 +103,9 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         String headerTitle = (getGroup(groupPosition)).toString();
+        ArrayList<Trophy> completed = ((MainGoal)getGroup(groupPosition)).completedTrophies();
+        ArrayList<Trophy> total = ((MainGoal)getGroup(groupPosition)).getTrophies();
+        double percentage = ((double)completed.size()/(double)total.size())*100;
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -114,7 +118,8 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         lblListHeader.setText(headerTitle);
 
         ProgressBar progressTrophy = (ProgressBar) convertView.findViewById(R.id.progressTrophy);
-        progressTrophy.setProgress(50);
+
+        progressTrophy.setProgress((int)percentage);
 
 
         return convertView;
