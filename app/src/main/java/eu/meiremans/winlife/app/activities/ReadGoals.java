@@ -112,6 +112,10 @@ public class ReadGoals extends Activity {
                 Intent action_overview_intent = new Intent(this, Profile.class);
                 this.startActivity(action_overview_intent);
                 break;
+            case R.id.action_add_goal:
+                Intent add_goal_intent = new Intent(this, AddGoal.class);
+                this.startActivity(add_goal_intent);
+                break;
             case R.id.action_settings:break;
 
 

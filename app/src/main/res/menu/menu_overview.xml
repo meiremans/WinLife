@@ -9,4 +9,8 @@
           android:title="@string/profile"
           android:orderInCategory="100"
           android:showAsAction="never" />
+    <item android:id="@+id/action_add_goal"
+          android:title="@string/add_goal"
+          android:orderInCategory="100"
+          android:showAsAction="never" />
 </menu>
