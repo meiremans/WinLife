@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import eu.meiremans.winlife.app.R;
 import eu.meiremans.winlife.app.business.Trophies.Trophy;
@@ -111,6 +112,9 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
                 .findViewById(R.id.lblListHeader);
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
+
+        ProgressBar progressTrophy = (ProgressBar) convertView.findViewById(R.id.progressTrophy);
+        progressTrophy.setProgress(50);
 
 
         return convertView;
