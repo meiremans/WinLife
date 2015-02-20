@@ -2,7 +2,6 @@ package eu.meiremans.winlife.app.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,7 +10,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import eu.meiremans.winlife.app.R;
 import eu.meiremans.winlife.app.business.TotalPoints;
-import eu.meiremans.winlife.app.connection.MyDatabase;
 import eu.meiremans.winlife.app.connection.TotalPointsDAO;
 import eu.meiremans.winlife.app.enums.Trophies.TrophyLevel;
 
@@ -20,18 +18,12 @@ import eu.meiremans.winlife.app.enums.Trophies.TrophyLevel;
  */
 public class Profile extends Activity {
 
-    private MyDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-refreshView();
-
-
-        //initialize database on first run(Otherwise this happens on first transaction & this takes a while
-        db = new MyDatabase(this);
-        SQLiteDatabase dbw = db.getWritableDatabase();
-        dbw.close();
+    refreshView();
 
 
 

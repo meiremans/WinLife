@@ -3,11 +3,14 @@ package eu.meiremans.winlife.app.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 import eu.meiremans.winlife.app.R;
@@ -15,11 +18,11 @@ import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.MyExpandableListAdapter;
 import eu.meiremans.winlife.app.business.Trophies.Trophy;
 import eu.meiremans.winlife.app.connection.GoalDAO;
+import eu.meiremans.winlife.app.connection.MyDatabase;
 import eu.meiremans.winlife.app.connection.TrophyDAO;
 import eu.meiremans.winlife.app.enums.Intent_Extras;
 
 import java.util.HashMap;
-
 import java.util.List;
 
 /**
@@ -29,7 +32,7 @@ public class ReadGoals extends Activity {
     private ExpandableListView expandableListView;
     private List<MainGoal> mainGoals;
     private  HashMap<MainGoal, List<Trophy>> trophies = new HashMap<>();
-
+    private MyDatabase db;
 
 
 
@@ -38,6 +41,8 @@ public class ReadGoals extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
+        firstRun();
+
 
         // Reading all goals
         Log.d("Reading: ", "Reading all goals..");
@@ -74,6 +79,18 @@ public class ReadGoals extends Activity {
                 return false;
             }
 
+        });
+
+        expandableListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int pos, long id) {
+                // TODO Auto-generated method stub
+
+                Log.v("long clicked","pos: " + pos);
+                Toast.makeText(getApplicationContext(),"HELLO",Toast.LENGTH_SHORT).show();
+                return true;
+            }
         });
     }
 
@@ -134,6 +151,30 @@ public class ReadGoals extends Activity {
             mainGoal.setTrophies(trophyDAO.getAllTrophiesForMainGoal(mainGoal));
             trophies.put(mainGoal,mainGoal.getTrophies());
         }
+    }
+
+    private void firstRun(){
+
+        //check for first run
+        final String PREFS_NAME = "MyPrefsFile";
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+        if (settings.getBoolean("my_first_time", true)) {
+            //the app is being launched for first time
+
+            Intent intent = new Intent(getApplicationContext(), AddGoal.class);
+            startActivity(intent);
+            finish();
+
+            // record the fact that the app has been started at least once
+            settings.edit().putBoolean("my_first_time", false).commit();
+        }
+        //initialize database on first run(Otherwise this happens on first transaction & this takes a while
+        db = new MyDatabase(this);
+        SQLiteDatabase dbw = db.getWritableDatabase();
+        dbw.close();
+
     }
 
 

@@ -8,18 +8,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import eu.meiremans.winlife.app.R;
 import eu.meiremans.winlife.app.business.Goal;
 import eu.meiremans.winlife.app.business.MainGoal;
-import eu.meiremans.winlife.app.business.SubGoal;
 import eu.meiremans.winlife.app.connection.GoalDAO;
 import eu.meiremans.winlife.app.enums.Intent_Extras;
-
-import java.util.List;
 
 
 public class AddGoal extends Activity {
@@ -68,6 +63,7 @@ public class AddGoal extends Activity {
                 Intent intent = new Intent(getApplicationContext(), AddTrophy.class);
                 intent.putExtra(Intent_Extras.MAIN_GOAL.getId(),mainGoal);
                 startActivity(intent);
+                finish();
 
             }
         });
