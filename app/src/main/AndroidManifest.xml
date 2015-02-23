@@ -21,6 +21,7 @@
         <activity android:name=".activities.AddTrophy"/>
         <activity android:name=".activities.Trophy_Details"/>
         <activity android:name=".activities.AndroidDatabaseManager"/>
+        <activity android:name=".activities.EditGoal"/>
     </application>
 
 </manifest>

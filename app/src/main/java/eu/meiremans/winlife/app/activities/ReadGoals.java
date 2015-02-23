@@ -87,8 +87,9 @@ public class ReadGoals extends Activity {
                                            int pos, long id) {
                 // TODO Auto-generated method stub
 
-                Log.v("long clicked","pos: " + pos);
-                Toast.makeText(getApplicationContext(),"HELLO",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), EditGoal.class);
+                intent.putExtra(Intent_Extras.MAIN_GOAL.getId(),mainGoals.get(pos));
+                startActivity(intent);
                 return true;
             }
         });
