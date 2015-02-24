@@ -71,4 +71,9 @@ public class Trophy implements Serializable{
     public void setTrophyDescription(String trophyDescription) {
         this.trophyDescription = trophyDescription;
     }
+
+    @Override
+    public String toString(){
+        return trophyName;
+    }
 }
