@@ -11,7 +11,7 @@ import eu.meiremans.winlife.app.business.Trophies.Trophy;
 import eu.meiremans.winlife.app.connection.TrophyDAO;
 import eu.meiremans.winlife.app.enums.Intent_Extras;
 import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
-import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyValue;
 
 /**
  * Created by Nick on 22/11/2014.LIKE A BOSS
@@ -43,18 +43,22 @@ addListenerOnButtons();
                 EditText trophyDescription   = (EditText)findViewById(R.id.txtTrophyDescription);
                 RadioGroup radioTrophyGroup = (RadioGroup)findViewById(R.id.radioTrophy);
                 RadioButton radioTrophyButton = (RadioButton) findViewById(radioTrophyGroup.getCheckedRadioButtonId());
+                RadioGroup radioTrophyTypeGroup = (RadioGroup)findViewById(R.id.radioTrophy);
+                RadioButton radioTrophyTypeButton = (RadioButton)findViewById(radioTrophyGroup.getCheckedRadioButtonId());
 
 
-                //convert the ID of the radiobutton to TrophyType enum
-                TrophyType trophyType;
+
+
+                //convert the ID of the radiobutton to TrophyValue enum
+                TrophyValue trophyValue;
                 switch (radioTrophyButton.getId()){
-                    case R.id.rdbBronze: trophyType = TrophyType.BRONZE;break;
-                    case R.id.rdbSilver: trophyType = TrophyType.SILVER;break;
-                    case R.id.rdbGold: trophyType = TrophyType.GOLD;break;
-                    default : trophyType = null;
+                    case R.id.rdbBronze: trophyValue = TrophyValue.BRONZE;break;
+                    case R.id.rdbSilver: trophyValue = TrophyValue.SILVER;break;
+                    case R.id.rdbGold: trophyValue = TrophyValue.GOLD;break;
+                    default : trophyValue = null;
                 }
 
-                Trophy trophy = new Trophy(trophyType,trophyTitle.getText().toString(),trophyDescription.getText().toString(), TrophyState.NOT_COMPLETED);
+                Trophy trophy = new Trophy(trophyValue,trophyTitle.getText().toString(),trophyDescription.getText().toString(), TrophyState.NOT_COMPLETED);
                 trophy.setMainGoalId(mainGoal.getId());
                 TrophyDAO trophyDAO = new TrophyDAO(getApplicationContext());
                 trophyDAO.addTrophy(trophy);

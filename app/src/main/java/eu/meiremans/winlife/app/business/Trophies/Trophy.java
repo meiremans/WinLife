@@ -1,7 +1,7 @@
 package eu.meiremans.winlife.app.business.Trophies;
 
 import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
-import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyValue;
 
 import java.io.Serializable;
 
@@ -10,15 +10,15 @@ import java.io.Serializable;
  */
 public class Trophy implements Serializable{
     Integer Id;
-    TrophyType trophyType;
+    TrophyValue trophyValue;
     TrophyState trophyState;
     String trophyName;
     String trophyDescription;
     Integer mainGoalId;
 
 
-    public Trophy (TrophyType trophyType,String trophyName,String trophyDescription,TrophyState trophyState){
-        this.trophyType = trophyType;
+    public Trophy (TrophyValue trophyValue,String trophyName,String trophyDescription,TrophyState trophyState){
+        this.trophyValue = trophyValue;
         this.trophyName = trophyName;
         this.trophyDescription = trophyDescription;
         this.trophyState = trophyState;
@@ -40,12 +40,12 @@ public class Trophy implements Serializable{
         Id = id;
     }
 
-    public TrophyType getTrophyType() {
-        return trophyType;
+    public TrophyValue getTrophyValue() {
+        return trophyValue;
     }
 
-    public void setTrophyType(TrophyType trophyType) {
-        this.trophyType = trophyType;
+    public void setTrophyValue(TrophyValue trophyValue) {
+        this.trophyValue = trophyValue;
     }
 
     public TrophyState getTrophyState() {

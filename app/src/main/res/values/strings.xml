@@ -10,7 +10,7 @@
     <string name="goal_points">Goal points</string>
     <string name="Is_subgoal_from">Is subgoal from</string>
     <string name="main_goal">main goal is:</string>
-    <string name="choose_trophy_type">Choose Trophy Type</string>
+    <string name="choose_trophy_value">Choose Trophy Value</string>
     <string name="add_trophy">Add Trophy</string>
     <string name="trophy_title">Trophy Title</string>
     <string name="trophy_description">Trophy Description</string>
@@ -18,11 +18,13 @@
     <string name="silver">Silver</string>
     <string name="gold">Gold</string>
     <string name="trophy_finish_adding">Done adding trophies</string>
-    <string name="trophy_type">Trophy Type</string>
+    <string name="trophy_value">Trophy Value</string>
     <string name="trophy_completed">Trophy Completed</string>
     <string name="total_points">Total Points:</string>
     <string name="level">Level:</string>
     <string name="profile">Profile</string>
     <string name="point_until_next_level">Point until next level:</string>
+    <string name="trophy_type">Trophy Type</string>
+    <string name="choose_trophy_type">Choose Throphy Type</string>
 
 </resources>

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import eu.meiremans.winlife.app.R;
 import eu.meiremans.winlife.app.business.Trophies.Trophy;
 import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
-import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyValue;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,13 +65,13 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         ImageView iv = (ImageView) convertView.findViewById(R.id.trophy);
         iv.setImageResource(R.drawable.trophy_black);
         if(trophy.getTrophyState() == TrophyState.COMPLETED){
-            if(trophy.getTrophyType() == TrophyType.BRONZE)
+            if(trophy.getTrophyValue() == TrophyValue.BRONZE)
                 iv.setImageResource(R.drawable.trophy_bronze);
 
-            if(trophy.getTrophyType() == TrophyType.SILVER)
+            if(trophy.getTrophyValue() == TrophyValue.SILVER)
                 iv.setImageResource(R.drawable.trophy_silver);
 
-            if(trophy.getTrophyType() == TrophyType.GOLD)
+            if(trophy.getTrophyValue() == TrophyValue.GOLD)
                 iv.setImageResource(R.drawable.trophy_gold);
 
         }

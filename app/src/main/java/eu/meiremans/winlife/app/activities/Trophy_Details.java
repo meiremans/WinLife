@@ -47,7 +47,7 @@ public class Trophy_Details extends Activity {
         this.setTitle("Trophy details from " + trophy.getTrophyName());
         title.append(trophy.getTrophyName());
         description.append(trophy.getTrophyDescription());
-        type.append(trophy.getTrophyType().name());
+        type.append(trophy.getTrophyValue().name());
 
         completed.setChecked(trophy.getTrophyState().equals(TrophyState.COMPLETED) ? Boolean.TRUE : Boolean.FALSE);
 

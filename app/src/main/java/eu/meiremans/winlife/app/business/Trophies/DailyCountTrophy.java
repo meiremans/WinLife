@@ -1,7 +1,7 @@
 package eu.meiremans.winlife.app.business.Trophies;
 
 import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
-import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyValue;
 
 /**
  * Created by Nick on 24/11/2014.LIKE A BOSS
@@ -11,8 +11,8 @@ public class DailyCountTrophy extends Trophy {
     Integer dayCount;
     Integer endDayStreak;
 
-    public DailyCountTrophy(TrophyType trophyType,String trophyName,String trophyDescription,TrophyState trophyState,Boolean alreadyAskedToday,Integer dayCount){
-        super(trophyType,trophyName,trophyDescription,trophyState);
+    public DailyCountTrophy(TrophyValue trophyValue,String trophyName,String trophyDescription,TrophyState trophyState,Boolean alreadyAskedToday,Integer dayCount){
+        super(trophyValue,trophyName,trophyDescription,trophyState);
         this.alreadyAskedToday = alreadyAskedToday;
         this.dayCount = dayCount;
     }

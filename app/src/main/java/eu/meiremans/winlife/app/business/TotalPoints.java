@@ -1,7 +1,7 @@
 package eu.meiremans.winlife.app.business;
 
 import eu.meiremans.winlife.app.enums.Trophies.TrophyLevel;
-import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyValue;
 
 /**
  * Created by Nick on 23/11/2014.LIKE A BOSS
@@ -14,9 +14,9 @@ public class TotalPoints {
     Integer numberGold;
 
     public Integer getTotalPoints() {
-        return (numberBronze * TrophyType.BRONZE.getTrophyPoints())
-                + (numberSilver * TrophyType.SILVER.getTrophyPoints())
-                + (numberGold * TrophyType.GOLD.getTrophyPoints());
+        return (numberBronze * TrophyValue.BRONZE.getTrophyPoints())
+                + (numberSilver * TrophyValue.SILVER.getTrophyPoints())
+                + (numberGold * TrophyValue.GOLD.getTrophyPoints());
     }
 
     public TrophyLevel getCurrentLevel() {

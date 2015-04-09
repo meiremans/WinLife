@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:weightSum="1">
+              android:layout_height="match_parent" android:weightSum="1"
+              tools:context=".activities.AddTrophy">
 
     <TextView
             android:layout_width="wrap_content"
@@ -37,6 +39,30 @@
             android:layout_height="wrap_content"
             android:text="@string/choose_trophy_type"
             android:id="@+id/textView4"/>
+    <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/radioType">
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bronze"
+                android:id="@+id/rdbOneTime"/>
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/silver"
+                android:id="@+id/rdbDaily"/>
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gold"
+                android:id="@+id/rdbCounter"/>
+    </RadioGroup>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_trophy_value"
+            android:id="@+id/txtViewValue"/>
     <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/radioTrophy">

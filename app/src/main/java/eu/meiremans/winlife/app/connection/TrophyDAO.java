@@ -8,7 +8,7 @@ import eu.meiremans.winlife.app.business.MainGoal;
 import eu.meiremans.winlife.app.business.Trophies.DailyCountTrophy;
 import eu.meiremans.winlife.app.business.Trophies.Trophy;
 import eu.meiremans.winlife.app.enums.Trophies.TrophyState;
-import eu.meiremans.winlife.app.enums.Trophies.TrophyType;
+import eu.meiremans.winlife.app.enums.Trophies.TrophyValue;
 import eu.meiremans.winlife.app.enums.database.TrophiesColumns;
 import eu.meiremans.winlife.app.enums.database.WinLifeTables;
 
@@ -31,7 +31,7 @@ public class TrophyDAO {
         ContentValues values = new ContentValues();
         values.put(TrophiesColumns.TROPHIES_TITLE.getColumnName(), trophy.getTrophyName());
         values.put(TrophiesColumns.TROPHIES_DESCRIPTION.getColumnName(), trophy.getTrophyDescription());
-        values.put(TrophiesColumns.TROPHIES_TYPE.getColumnName(), trophy.getTrophyType().name());//used the name for storing in the db, most convienent solution;
+        values.put(TrophiesColumns.TROPHIES_TYPE.getColumnName(), trophy.getTrophyValue().name());//used the name for storing in the db, most convienent solution;
         values.put(TrophiesColumns.TROPHIES_STATE.getColumnName(), trophy.getTrophyState().name());
         values.put(TrophiesColumns.TROPHIES_GOAL.getColumnName(), trophy.getMainGoalId());
         if(trophy instanceof DailyCountTrophy){
@@ -49,7 +49,7 @@ public class TrophyDAO {
         ContentValues values = new ContentValues();
         values.put(TrophiesColumns.TROPHIES_TITLE.getColumnName(), trophy.getTrophyName());
         values.put(TrophiesColumns.TROPHIES_DESCRIPTION.getColumnName(), trophy.getTrophyDescription());
-        values.put(TrophiesColumns.TROPHIES_TYPE.getColumnName(), trophy.getTrophyType().name());//used the name for storing in the db, most convenient solution;
+        values.put(TrophiesColumns.TROPHIES_TYPE.getColumnName(), trophy.getTrophyValue().name());//used the name for storing in the db, most convenient solution;
         values.put(TrophiesColumns.TROPHIES_STATE.getColumnName(), trophy.getTrophyState().name());
         values.put(TrophiesColumns.TROPHIES_GOAL.getColumnName(), trophy.getMainGoalId());
 
@@ -61,7 +61,7 @@ public class TrophyDAO {
         Integer trophyId;
         String trophyTitle;
         String trophyDescription;
-        TrophyType trophyType;
+        TrophyValue trophyValue;
         TrophyState trophyState;
 
         ArrayList<Trophy> trophies = new ArrayList<>();
@@ -76,9 +76,9 @@ public class TrophyDAO {
                 trophyId = c.getInt(c.getColumnIndex(TrophiesColumns.ID.getColumnName()));
                 trophyTitle = c.getString(c.getColumnIndex(TrophiesColumns.TROPHIES_TITLE.getColumnName()));
                 trophyDescription = c.getString(c.getColumnIndex(TrophiesColumns.TROPHIES_DESCRIPTION.getColumnName()));
-                trophyType = TrophyType.valueOf(c.getString((c.getColumnIndex(TrophiesColumns.TROPHIES_TYPE.getColumnName()))));
+                trophyValue = TrophyValue.valueOf(c.getString((c.getColumnIndex(TrophiesColumns.TROPHIES_TYPE.getColumnName()))));
                 trophyState = TrophyState.valueOf(c.getString(c.getColumnIndex(TrophiesColumns.TROPHIES_STATE.getColumnName())));
-                Trophy trophy = new Trophy(trophyType,trophyTitle,trophyDescription,trophyState);
+                Trophy trophy = new Trophy(trophyValue,trophyTitle,trophyDescription,trophyState);
                 trophy.setId(trophyId);
                 trophies.add(trophy);
             }while(c.moveToNext());
